@@ -8,7 +8,7 @@ import FormInput from '../components/FormInput.vue';
         </div>
         <div id="form-cell">
             <div id="form-container">
-                <h2>Sign in to ArtistWorkds</h2>
+                <h2>Sign in to ArtistWorks</h2>
                 <p>New user? <a href="#">Create an account.</a></p>
                 <form>
                     <FormInput id="login-username">Enter username</FormInput>
