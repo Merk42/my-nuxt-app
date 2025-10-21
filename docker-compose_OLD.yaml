@@ -1,0 +1,12 @@
+services:
+  nuxt-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    #volumes:
+      #- .:/app
+      #- /app/node_modules # Exclude node_modules from host mount to prevent issues
+    environment:
+      - NODE_ENV=production # Or 'development' for local dev
