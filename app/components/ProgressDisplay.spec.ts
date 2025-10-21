@@ -164,7 +164,7 @@ describe('ProgressDisplay Component', () => {
         }
       });
       
-      expect(wrapper.text()).toContain('2:5');
+      expect(wrapper.text()).toContain('2:05');
     });
   });
 

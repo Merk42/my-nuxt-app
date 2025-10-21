@@ -1,0 +1,17 @@
+volumes:
+  test_nuxt:
+
+services:
+  my-app-test:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.test
+    volumes:
+      - .:/src
+      - /src/node_modules
+      - test_nuxt:/src/.nuxt
+      - /src/.cache
+    working_dir: /src
+    environment:
+      - NODE_ENV=test
+    command: sh -c "npm run test"
