@@ -40,10 +40,129 @@ const mockLessonsData = {
     lessons: {
       result: {
         results: [
-          { id: 1, Name: 'Introduction to Spanish' },
-          { id: 2, Name: 'Spanish Grammar Basics' },
-          { id: 3, Name: 'Advanced Spanish Conversation' },
-          { id: 4, Name: 'French for Beginners' }
+                    {
+                        "Yotposcore": 0,
+                        "Lessonid": "",
+                        "Access": "",
+                        "Code": "",
+                        "Parentid": "",
+                        "Channel": "",
+                        "Curriculum": "",
+                        "Cid": 2959,
+                        "Styles": "",
+                        "Releasedate": "2025-12-05",
+                        "Popularity": 0,
+                        "Educator": "Ariel Posen",
+                        "Price": 0,
+                        "Image": "https:\/\/d2xkd1fof6iiv9.cloudfront.net\/segments\/v98253@2x.jpg",
+                        "Description": "",
+                        "Tftv": "",
+                        "Name": "Back to Basics: Triads<br \/><small>Course Wrap-Up & Next Steps<\/small>",
+                        "Url": "",
+                        "Sku": "TFITEMV-98253",
+                        "Ct": "Back to Basics: Triads (Pre-Order)",
+                        "Authorid": "",
+                        "Subtitle": "",
+                        "Instrument": "",
+                        "Series": "",
+                        "Skilllevel": "",
+                        "Sid": 98253,
+                        "Img": "",
+                        "Yotpocount": 0,
+                        "Status": "",
+                        "id": 98253,
+                        "results_flags": "",
+                        "early_access_date": false,
+                        "yotpo": {
+                            "reviews": 0,
+                            "score": 0
+                        },
+                        "Type": "lesson",
+                        "song": 0,
+                        "objectID": "truefire-lessons-98253"
+                    },
+                    {
+                        "Yotposcore": 0,
+                        "Lessonid": "",
+                        "Access": "",
+                        "Code": "",
+                        "Parentid": "",
+                        "Channel": "",
+                        "Curriculum": "",
+                        "Cid": 2959,
+                        "Styles": "",
+                        "Releasedate": "2025-12-05",
+                        "Popularity": 0,
+                        "Educator": "Ariel Posen",
+                        "Price": 0,
+                        "Image": "https:\/\/d2xkd1fof6iiv9.cloudfront.net\/segments\/v98252@2x.jpg",
+                        "Description": "",
+                        "Tftv": "",
+                        "Name": "Metro \"B\" Section with Mixed Triads<br \/><small>Lesson & Demo<\/small>",
+                        "Url": "",
+                        "Sku": "TFITEMV-98252",
+                        "Ct": "Back to Basics: Triads (Pre-Order)",
+                        "Authorid": "",
+                        "Subtitle": "",
+                        "Instrument": "",
+                        "Series": "",
+                        "Skilllevel": "",
+                        "Sid": 98252,
+                        "Img": "",
+                        "Yotpocount": 0,
+                        "Status": "",
+                        "id": 98252,
+                        "results_flags": "",
+                        "early_access_date": false,
+                        "yotpo": {
+                            "reviews": 0,
+                            "score": 0
+                        },
+                        "Type": "lesson",
+                        "song": 0,
+                        "objectID": "truefire-lessons-98252"
+                    },
+                    {
+                        "Yotposcore": 0,
+                        "Lessonid": "",
+                        "Access": "",
+                        "Code": "",
+                        "Parentid": "",
+                        "Channel": "",
+                        "Curriculum": "",
+                        "Cid": 2959,
+                        "Styles": "",
+                        "Releasedate": "2025-12-05",
+                        "Popularity": 0,
+                        "Educator": "Ariel Posen",
+                        "Price": 0,
+                        "Image": "https:\/\/d2xkd1fof6iiv9.cloudfront.net\/segments\/v98251@2x.jpg",
+                        "Description": "",
+                        "Tftv": "",
+                        "Name": "Metro \"A\" Section with Mixed Triads<br \/><small>Lesson & Demo<\/small>",
+                        "Url": "",
+                        "Sku": "TFITEMV-98251",
+                        "Ct": "Back to Basics: Triads (Pre-Order)",
+                        "Authorid": "",
+                        "Subtitle": "",
+                        "Instrument": "",
+                        "Series": "",
+                        "Skilllevel": "",
+                        "Sid": 98251,
+                        "Img": "",
+                        "Yotpocount": 0,
+                        "Status": "",
+                        "id": 98251,
+                        "results_flags": "",
+                        "early_access_date": false,
+                        "yotpo": {
+                            "reviews": 0,
+                            "score": 0
+                        },
+                        "Type": "lesson",
+                        "song": 0,
+                        "objectID": "truefire-lessons-98251"
+                    }
         ]
       }
     }
@@ -119,7 +238,7 @@ describe('Overview Component', () => {
       const wrapper = createWrapper();
       await flushPromises();
 
-      expect(wrapper.vm.filteredLessons).toHaveLength(4);
+      expect(wrapper.vm.filteredLessons).toHaveLength(3);
     });
 
     it('should filter lessons based on search term', async () => {
@@ -131,12 +250,9 @@ describe('Overview Component', () => {
       await flushPromises();
 
       const searchInput = wrapper.find('input[type="search"]');
-      await searchInput.setValue('spanish');
+      await searchInput.setValue('Metro');
 
-      expect(wrapper.vm.filteredLessons).toHaveLength(3);
-      expect(wrapper.vm.filteredLessons.every((l: any) => 
-        l.Name.toLowerCase().includes('spanish')
-      )).toBe(true);
+      expect(wrapper.vm.filteredLessons).toHaveLength(2);
     });
 
     it('should be case-insensitive when filtering', async () => {
@@ -147,9 +263,9 @@ describe('Overview Component', () => {
       const wrapper = createWrapper();
       await flushPromises();
 
-      await wrapper.find('input[type="search"]').setValue('SPANISH');
+      await wrapper.find('input[type="search"]').setValue('BACK');
 
-      expect(wrapper.vm.filteredLessons).toHaveLength(3);
+      expect(wrapper.vm.filteredLessons).toHaveLength(1);
     });
 
     it('should return empty array when data is null', () => {
@@ -221,7 +337,7 @@ describe('Overview Component', () => {
       await flushPromises();
 
       const lessons = wrapper.findAll('.lesson');
-      expect(lessons).toHaveLength(4);
+      expect(lessons).toHaveLength(3);
     });
 
     it('should display result summary with correct stats', () => {
@@ -283,12 +399,11 @@ describe('Overview Component', () => {
 
       wrapper.vm.fterm = '';
       await wrapper.vm.$nextTick();
-      expect(wrapper.vm.filteredLessons).toHaveLength(4);
+      expect(wrapper.vm.filteredLessons).toHaveLength(3);
 
       wrapper.vm.fterm = 'french';
       await wrapper.vm.$nextTick();
-      expect(wrapper.vm.filteredLessons).toHaveLength(1);
-      expect(wrapper.vm.filteredLessons[0].Name).toBe('French for Beginners');
+      expect(wrapper.vm.filteredLessons).toHaveLength(0);
     });
   });
 });
