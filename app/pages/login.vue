@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import FormInput from '../components/FormInput.vue';
-
-
 const username = ref("");
 const password = ref("")
 
