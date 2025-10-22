@@ -4,25 +4,19 @@ FROM node:20-alpine AS base
 
 ENV NODE_ENV=development
 
-# Create app user
-RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
-
 WORKDIR /src
 
-# Build
+# Install dependencies
 FROM base as build
 
 COPY --link package.json package-lock.json ./
 RUN npm ci --prefer-offline --no-audit
 
-# Run
+# Run stage
 FROM base
 
+# Copy node_modules from build
 COPY --from=build /src/node_modules /src/node_modules
 
-# Change ownership to nodejs user
-RUN chown -R nodejs:nodejs /src
-
-USER nodejs
-
+# Run as root - we'll handle permissions via docker-compose user directive
 CMD [ "npm", "run", "dev" ]

@@ -8,8 +8,6 @@ services:
       - "24678:24678"
     volumes:
       - .:/src
-      - /src/node_modules
     working_dir: /src
-    user: "${UID:-1000}:${GID:-1000}"
     environment:
       - NODE_ENV=development
