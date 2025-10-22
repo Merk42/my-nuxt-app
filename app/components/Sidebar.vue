@@ -79,10 +79,14 @@
         </aside>
 </template>
 <style scoped>
+
 aside {
     background-color: var(--side-blue);
     color:#FFF;
     padding:20px;
+
+    grid-template-columns: auto;
+    grid-template-rows: auto auto 1fr auto;
 }
 aside ul {
     list-style-type:none;

@@ -68,7 +68,6 @@ const onInput = (event: any) => {
   emit('update:modelValue', event.target.value)
 }
 function isRequired(value: any) {
-  console.log('isre')
   if ((value && value.toString().trim()) || !props.required) {
     return true;
   }

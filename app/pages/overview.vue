@@ -17,13 +17,13 @@ const lessonlayout = computed(() => {
 })
 
 async function fetchData() {
-  try {
-    // Reset previous data and error
+try {
     data.value = null;
-    const result = await $fetch<LESSONS_RESPONSE>('/lessons.json');
+    const response = await fetch('/lessons.json');
+    const result = await response.json() as LESSONS_RESPONSE;
     data.value = result;
   } catch (e) {
-    console.log('error', e)
+    console.log('error', e);
   }
 }
 
@@ -108,19 +108,30 @@ aside {
 aside ul+ul {
     border-top: 1px solid #314b65;
 }
+#view-3,
+#view-3+label {
+    display: none;
+}
 @media only screen and (min-width:640px) {
     #lesson-grid {
         grid-template-columns: 300px 1fr;
+        grid-template-rows:50px 1fr;
         grid-template-areas:
         "aside header"
         "aside main ";
     }
     aside{
-        display: block;
+        display: grid;
     }
     main {
         margin-inline:3rem
     }
+    
+    #view-3,
+    #view-3+label{
+        display: block;
+    }
+
 }
 #result-summary,
 #result-summary span{

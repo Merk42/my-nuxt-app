@@ -1,5 +1,17 @@
 <script setup lang="ts">
 import FormInput from '../components/FormInput.vue';
+
+
+const username = ref("");
+const password = ref("")
+
+const cancontinue = computed(() => {
+    return !!username.value && !!password.value
+})
+
+const handleSubmit = async () => {
+    navigateTo('/overview')
+}
 </script>
 <template>
     <div id="sign-in-page">
@@ -10,10 +22,10 @@ import FormInput from '../components/FormInput.vue';
             <div id="form-container">
                 <h2>Sign in to ArtistWorks</h2>
                 <p>New user? <a href="#">Create an account.</a></p>
-                <form>
-                    <FormInput id="login-username">Enter username</FormInput>
-                    <FormInput id="login-password" type="password">Enter password</FormInput>
-                    <button>Continue</button>
+                <form @submit.prevent="handleSubmit">
+                    <FormInput id="login-username" v-model="username">Enter username</FormInput>
+                    <FormInput id="login-password" v-model="password" type="password">Enter password</FormInput>
+                    <button :disabled="!cancontinue">Continue</button>
                 </form>
                 <p><a href="#">Forgot password?</a></p>
 

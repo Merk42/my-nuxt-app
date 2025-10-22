@@ -43,7 +43,7 @@ small {
 }
 
 
-@container (width > 40vw) {
+@container (width > 50vw) {
     .lesson img {
         height:50px
     }
