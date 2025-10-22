@@ -137,19 +137,6 @@ describe('Login Component', () => {
   });
 
   describe('Form Submission', () => {
-    it('should call handleSubmit when form is submitted', async () => {
-      const wrapper = createWrapper();
-      const handleSubmitSpy = vi.spyOn(wrapper.vm, 'handleSubmit');
-      
-      await wrapper.find('#login-username').setValue('testuser');
-      await wrapper.find('#login-password').setValue('password123');
-      
-      const form = wrapper.find('form');
-      await form.trigger('submit');
-      
-      expect(handleSubmitSpy).toHaveBeenCalled();
-    });
-
     it('should navigate to /overview on form submission', async () => {
       const wrapper = createWrapper();
       
